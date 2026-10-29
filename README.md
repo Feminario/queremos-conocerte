@@ -14,4 +14,4 @@ Sin el paso 3 el formulario se ve y funciona, pero **no guarda** en la hoja.
 ## Columnas
 
 Se rellenan: Nombre (nombre + apellido), Whatsapp (código de país + número), Email, Salario, Por qué quieres unirte? (respuesta a "¿Qué quieres lograr con tu dinero?"), Fecha, Campaña / Ad Set / Anuncio (desde `utm_campaign`, `utm_term`, `utm_content` de la URL).
-Se crean si faltan: **¿Tienes pensado algo para invertir?** y **Origen**. El resto de columnas no se tocan.
+Se crean si faltan: **¿Tienes dinero disponible para invertir?** y **Origen**. El resto de columnas no se tocan.

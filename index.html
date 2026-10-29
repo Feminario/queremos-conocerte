@@ -21,7 +21,7 @@
 
   <section class="panel">
     <div class="card" id="card">
-      <p class="brand">feminario</p>
+      <img class="brand" src="assets/logo.png" alt="Feminario" width="150" height="45">
 
       <div id="formView">
         <h1>Queremos conocerte</h1>
@@ -59,17 +59,26 @@
             </div>
           </div>
 
-          <label class="field">
-            <span>¿Qué quieres lograr con tu dinero?</span>
-            <textarea name="meta" rows="3" required></textarea>
-          </label>
-
-          <fieldset class="field">
-            <legend>¿Tienes pensado algo para invertir?</legend>
+          <fieldset class="field" data-group="meta">
+            <legend>¿Qué quieres lograr con tu dinero? <small>(elige todas las que quieras)</small></legend>
             <div class="chips">
-              <label><input type="radio" name="inversion" value="Sí, ya sé en qué quiero invertir" required><span>Sí, ya sé en qué</span></label>
-              <label><input type="radio" name="inversion" value="Tengo ideas, pero no estoy segura"><span>Tengo ideas, no estoy segura</span></label>
-              <label><input type="radio" name="inversion" value="No, quiero aprender por dónde empezar"><span>No, quiero aprender por dónde empezar</span></label>
+              <label><input type="checkbox" name="meta" value="Ordenar mis finanzas"><span>Ordenar mis finanzas</span></label>
+              <label><input type="checkbox" name="meta" value="Ahorrar y crear un fondo de emergencias"><span>Ahorrar y crear un fondo de emergencias</span></label>
+              <label><input type="checkbox" name="meta" value="Salir de deudas"><span>Salir de deudas</span></label>
+              <label><input type="checkbox" name="meta" value="Empezar a invertir"><span>Empezar a invertir</span></label>
+              <label><input type="checkbox" name="meta" value="Hacer crecer mi emprendimiento"><span>Hacer crecer mi emprendimiento</span></label>
+              <label><input type="checkbox" name="meta" value="Comprar vivienda o un activo"><span>Comprar vivienda o un activo</span></label>
+              <label><input type="checkbox" name="meta" value="Planear mi retiro"><span>Planear mi retiro</span></label>
+              <label><input type="checkbox" name="meta" value="Lograr libertad financiera"><span>Lograr libertad financiera</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="field" data-group="inversion">
+            <legend>¿Tienes dinero disponible para invertir?</legend>
+            <div class="chips">
+              <label><input type="radio" name="inversion" value="Sí, ya tengo dinero para invertir"><span>Sí, ya tengo dinero para invertir</span></label>
+              <label><input type="radio" name="inversion" value="Tengo un poco ahorrado y quiero empezar"><span>Tengo un poco ahorrado y quiero empezar</span></label>
+              <label><input type="radio" name="inversion" value="Todavía no, primero quiero ahorrar"><span>Todavía no, primero quiero ahorrar</span></label>
             </div>
           </fieldset>
 

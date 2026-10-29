@@ -57,14 +57,16 @@
     const f = form.elements;
     const bad = [];
     const mark = (el, isBad) => { el.closest(".field").classList.toggle("invalid", isBad); if (isBad) bad.push(el); };
-    ["nombre", "apellido", "meta"].forEach((n) => mark(f[n], !f[n].value.trim()));
+    ["nombre", "apellido"].forEach((n) => mark(f[n], !f[n].value.trim()));
     mark(f.email, !emailOk(f.email.value.trim()));
     const digits = f.telefono.value.replace(/\D/g, "");
     mark(f.telefono, digits.length < 6 || digits.length > 12);
     mark(f.salario, !f.salario.value);
-    const inv = form.querySelector("input[name=inversion]:checked");
-    form.querySelector("fieldset").classList.toggle("invalid", !inv);
-    if (!inv) bad.push(form.querySelector("input[name=inversion]"));
+    ["meta", "inversion"].forEach((g) => {
+      const none = !form.querySelector(`input[name=${g}]:checked`);
+      form.querySelector(`fieldset[data-group=${g}]`).classList.toggle("invalid", none);
+      if (none) bad.push(form.querySelector(`input[name=${g}]`));
+    });
     return bad;
   }
 
@@ -91,8 +93,8 @@
       "Whatsapp": country[2] + f.telefono.value.replace(/\D/g, "").replace(/^0+/, ""),
       "Email": f.email.value.trim(),
       "Salario": f.salario.value,
-      "¿Qué quieres lograr con tu dinero?": f.meta.value.trim(),
-      "¿Tienes pensado algo para invertir?": form.querySelector("input[name=inversion]:checked").value,
+      "¿Qué quieres lograr con tu dinero?": [...form.querySelectorAll("input[name=meta]:checked")].map((i) => i.value).join(", "),
+      "¿Tienes dinero disponible para invertir?": form.querySelector("input[name=inversion]:checked").value,
       "Fecha": new Date().toISOString(),
       "Origen": cfg.ORIGEN,
       "Campaña": utm.get("utm_campaign") || "",

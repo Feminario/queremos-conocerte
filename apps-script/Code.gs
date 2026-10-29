@@ -6,7 +6,7 @@ const SHEET_ID = "1D9tDfr-ABr-0PomegBH1DSnFyUXkZR4MVsGqHqvugkc";
 const SHEET_NAME = "Hoja 1";
 
 // Columnas del formulario que la hoja aún no tiene.
-const EXTRA_HEADERS = ["¿Qué quieres lograr con tu dinero?", "¿Tienes pensado algo para invertir?", "Origen"];
+const EXTRA_HEADERS = ["¿Qué quieres lograr con tu dinero?", "¿Tienes dinero disponible para invertir?", "Origen"];
 
 // La hoja ya tiene "Por qué quieres unirte?"; la respuesta de "meta" va ahí también.
 const ALIASES = { "¿Qué quieres lograr con tu dinero?": "Por qué quieres unirte?" };
