@@ -1,5 +1,5 @@
 :root {
-  --bg: #e3d0ec;        /* único tono de fondo */
+  --bg: #e3d0ec;       /* único tono de fondo */
   --lime: #ddf0a8;
   --ink: #1e1e22;
   --violet: #6e4a86;
@@ -20,38 +20,45 @@ body {
 }
 [hidden] { display: none !important; }
 
-/* Todo comparte el ancho de la foto */
+/* ---------- Tarjeta: foto a la izquierda, formulario a la derecha ---------- */
 .page {
   width: 100%;
-  max-width: calc(var(--photo-w) + 32px);
+  max-width: 1240px;
   margin: 0 auto;
   padding: 24px 16px 56px;
 }
 
 /* ---------- Encabezado ---------- */
 .brand { display: block; height: 32px; width: auto; }
-.head { margin-bottom: 32px; }
-.intro { margin-bottom: 28px; max-width: 720px; }
+.head { margin-bottom: 24px; }
+.intro { margin-bottom: 28px; }
 h1 {
   margin: 0 0 10px;
   font-weight: 800;
-  font-size: clamp(32px, 6vw, 56px);
+  font-size: clamp(30px, 5vw, 46px);
   line-height: 1.05;
   letter-spacing: -.03em;
 }
 .lead { margin: 0; font-size: clamp(16px, 2vw, 19px); color: var(--muted); }
 
-/* ---------- Foto: tamaño original, nunca se amplía ni se recorta ---------- */
-.photo { margin: 0 0 40px; }
-.photo img {
+
+.card {
+  display: grid; gap: 28px;
+  padding: 20px;
+  background: #f8f6ea;
+  border: 1.5px solid var(--ink);
+  border-radius: 32px;
+}
+.photo { margin: 0; }
+.photo img {   /* tamaño original: nunca se amplía ni se recorta */
   display: block;
   width: 100%; max-width: var(--photo-w);
   height: auto;
-  border-radius: 24px;
+  border-radius: 20px;
 }
 
 /* ---------- Formulario ---------- */
-.cols { display: grid; gap: 40px; }
+.cols { display: grid; gap: 32px; }
 .col { display: grid; gap: 20px; align-content: start; }
 .row { display: grid; gap: 20px; }
 .step {
@@ -64,7 +71,7 @@ h1 {
 .step b {
   display: grid; place-items: center;
   width: 30px; height: 30px; border-radius: 50%;
-  background: var(--ink); color: var(--bg);
+  background: var(--ink); color: #fff;
   font-size: 14px;
 }
 .field { display: grid; gap: 8px; border: 0; padding: 0; margin: 0; min-width: 0; }
@@ -149,7 +156,7 @@ input:focus-visible, select:focus-visible, .cc-btn:focus-visible {
 .pills span { border-radius: 999px; padding: 11px 18px; }
 
 /* ---------- Envío ---------- */
-.submit { display: grid; gap: 12px; margin-top: 40px; }
+.submit { display: grid; gap: 12px; margin-top: 32px; }
 .btn {
   display: flex; align-items: center; justify-content: center;
   min-height: 60px; padding: 0 32px;
@@ -180,13 +187,13 @@ input:focus-visible, select:focus-visible, .cc-btn:focus-visible {
 
 /* ---------- Tablet ---------- */
 @media (min-width: 600px) {
-  .page { padding: 40px 24px 72px; max-width: calc(var(--photo-w) + 48px); }
+  .page { padding: 40px 24px 72px; }
+  .card { padding: 28px; }
   .row { grid-template-columns: 1fr 1fr; }
-  .submit { justify-items: center; }
-  .btn-primary { width: min(100%, 420px); }
 }
 
-/* ---------- Escritorio: dos columnas ---------- */
-@media (min-width: 960px) {
-  .cols { grid-template-columns: 1fr 1fr; gap: 56px; }
+/* ---------- Escritorio: foto pequeña a la izquierda, formulario a la derecha ---------- */
+@media (min-width: 900px) {
+  .card { grid-template-columns: 360px minmax(0, 1fr); gap: 48px; padding: 40px; align-items: start; }
+  .side { position: sticky; top: 40px; }
 }
