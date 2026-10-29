@@ -11,22 +11,26 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<main class="page">
+<main class="page" id="card">
 
-  <aside class="photo" aria-hidden="true">
-    <img src="assets/foto.jpg" alt="">
-  </aside>
+  <header class="head">
+    <img class="brand" src="assets/logo.png" alt="Feminario" width="200" height="39">
+  </header>
 
-  <section class="panel">
-    <div class="card" id="card">
-      <img class="brand" src="assets/logo.png" alt="Feminario" width="200" height="39">
+  <div id="formView">
+    <div class="intro">
+      <h1>Queremos conocerte</h1>
+      <p class="lead">Cuéntanos un poco de ti y agenda una llamada para conocer el Club 365.</p>
+    </div>
 
-      <div id="formView">
-        <h1>Queremos conocerte</h1>
-        <p class="lead">Cuéntanos un poco de ti y agenda una llamada para conocer el Club 365.</p>
+    <figure class="photo">
+      <img src="assets/foto.jpg" alt="Andrea y Valentina, fundadoras de Feminario" width="1277" height="1012">
+    </figure>
 
-        <form id="leadForm" novalidate>
-          <h2 class="step">Tus datos</h2>
+    <form id="leadForm" novalidate>
+      <div class="cols">
+        <section class="col">
+          <h2 class="step"><b>1</b> Tus datos</h2>
           <div class="row">
             <label class="field">
               <span>Nombre</span>
@@ -58,13 +62,26 @@
             </div>
           </div>
 
-          <h2 class="step">Tus metas</h2>
+          <label class="field">
+            <span>¿Cuánto ganas aproximadamente al mes?</span>
+            <select name="salario" required>
+              <option value="" selected disabled>Elige un rango</option>
+              <option value="menos_de_$500_dólares">Menos de $500 dólares</option>
+              <option value="entre_$500_y_$750_dólares">Entre $500 y $750 dólares</option>
+              <option value="entre_$750_y_$1.000_dólares">Entre $750 y $1.000 dólares</option>
+              <option value="entre_$1.000_y_2.000_dólares">Entre $1.000 y $2.000 dólares</option>
+              <option value="más_de_$2.000_dólares">Más de $2.000 dólares</option>
+            </select>
+          </label>
+        </section>
 
+        <section class="col">
+          <h2 class="step"><b>2</b> Tus metas</h2>
           <fieldset class="field" data-group="meta">
-            <legend>¿Qué quieres lograr con tu dinero? <small>(elige todas las que quieras)</small></legend>
-            <div class="chips cols">
+            <legend>¿Qué quieres lograr con tu dinero? <small>Elige todas las que quieras</small></legend>
+            <div class="chips pills">
               <label><input type="checkbox" name="meta" value="Ordenar mis finanzas"><span>Ordenar mis finanzas</span></label>
-              <label><input type="checkbox" name="meta" value="Ahorrar y crear un fondo de emergencias"><span>Ahorrar y crear un fondo de emergencias</span></label>
+              <label><input type="checkbox" name="meta" value="Ahorrar y crear un fondo de emergencias"><span>Crear un fondo de emergencias</span></label>
               <label><input type="checkbox" name="meta" value="Salir de deudas"><span>Salir de deudas</span></label>
               <label><input type="checkbox" name="meta" value="Empezar a invertir"><span>Empezar a invertir</span></label>
               <label><input type="checkbox" name="meta" value="Hacer crecer mi emprendimiento"><span>Hacer crecer mi emprendimiento</span></label>
@@ -82,37 +99,26 @@
               <label><input type="radio" name="inversion" value="Todavía no, primero quiero ahorrar"><span>Todavía no, primero quiero ahorrar</span></label>
             </div>
           </fieldset>
-
-          <label class="field">
-            <span>¿Cuánto ganas aproximadamente al mes?</span>
-            <select name="salario" required>
-              <option value="" selected disabled>Elige un rango</option>
-              <option value="menos_de_$500_dólares">Menos de $500 dólares</option>
-              <option value="entre_$500_y_$750_dólares">Entre $500 y $750 dólares</option>
-              <option value="entre_$750_y_$1.000_dólares">Entre $750 y $1.000 dólares</option>
-              <option value="entre_$1.000_y_2.000_dólares">Entre $1.000 y $2.000 dólares</option>
-              <option value="más_de_$2.000_dólares">Más de $2.000 dólares</option>
-            </select>
-          </label>
-
-          <p class="error" id="formError" role="alert" hidden></p>
-          <button class="btn btn-primary" id="submitBtn" type="submit">Agendar mi llamada</button>
-          <p class="fine">Se abrirá el calendario para que elijas tu horario.</p>
-        </form>
+        </section>
       </div>
 
-      <div id="doneView" hidden>
-        <h1>¡Listo, <span id="doneName"></span>!</h1>
-        <p class="lead">Recibimos tus datos. Elige tu horario en el calendario y, si tienes dudas antes, escríbele a Emi.</p>
-        <a class="btn btn-wa" id="waBtn" href="https://wa.me/573148260099?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20del%20Club%20365%20%F0%9F%92%9C" target="_blank" rel="noopener">Habla con Emi 💜</a>
-        <a class="link" id="calLink" href="https://calendar.app.google/MBTR8QHKbUkWTskN9" target="_blank" rel="noopener">¿No se abrió el calendario? Agenda aquí</a>
+      <div class="submit">
+        <p class="error" id="formError" role="alert" hidden></p>
+        <button class="btn btn-primary" id="submitBtn" type="submit">Agendar mi llamada</button>
+        <p class="fine">Se abrirá el calendario para que elijas tu horario.</p>
       </div>
-    </div>
-  </section>
+    </form>
+  </div>
+
+  <div id="doneView" class="done" hidden>
+    <h1>¡Listo, <span id="doneName"></span>!</h1>
+    <p class="lead">Recibimos tus datos. Elige tu horario en el calendario y, si tienes dudas antes, escríbele a Emi.</p>
+    <a class="btn btn-wa" id="waBtn" href="https://wa.me/573148260099?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20del%20Club%20365%20%F0%9F%92%9C" target="_blank" rel="noopener">Habla con Emi 💜</a>
+    <a class="link" id="calLink" href="https://calendar.app.google/MBTR8QHKbUkWTskN9" target="_blank" rel="noopener">¿No se abrió el calendario? Agenda aquí</a>
+  </div>
 </main>
 
 <canvas id="confetti" aria-hidden="true"></canvas>
-
 
 <script src="config.js"></script>
 <script src="app.js"></script>
