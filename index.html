@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Queremos conocerte · Feminario</title>
+<meta name="description" content="Cuéntanos de ti y agenda tu llamada para conocer el Club 365 de Feminario.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="page">
+
+  <aside class="photo" aria-hidden="true">
+    <img src="assets/foto.png" alt="">
+    <svg class="deco deco-star" viewBox="0 0 100 100"><use href="#s-star8"/></svg>
+    <svg class="deco deco-pin" viewBox="0 0 100 100"><use href="#s-pinwheel"/></svg>
+  </aside>
+
+  <section class="panel">
+    <div class="card" id="card">
+      <p class="brand">feminario</p>
+
+      <div id="formView">
+        <h1>Queremos conocerte</h1>
+        <p class="lead">Cuéntanos un poco de ti y agenda una llamada para conocer el Club 365.</p>
+
+        <form id="leadForm" novalidate>
+          <div class="row">
+            <label class="field">
+              <span>Nombre</span>
+              <input name="nombre" type="text" autocomplete="given-name" required>
+            </label>
+            <label class="field">
+              <span>Apellido</span>
+              <input name="apellido" type="text" autocomplete="family-name" required>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Email</span>
+            <input name="email" type="email" autocomplete="email" inputmode="email" required>
+          </label>
+
+          <div class="field">
+            <span id="telLabel">Número de teléfono</span>
+            <div class="tel">
+              <div class="cc" id="cc">
+                <button type="button" class="cc-btn" id="ccBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Código de país">
+                  <img id="ccFlag" alt="" width="22" height="16">
+                  <b id="ccCode">+57</b>
+                  <svg width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+                <ul class="cc-list" id="ccList" role="listbox" hidden></ul>
+              </div>
+              <input name="telefono" type="tel" autocomplete="tel-national" inputmode="tel" aria-labelledby="telLabel" required>
+            </div>
+          </div>
+
+          <label class="field">
+            <span>¿Qué quieres lograr con tu dinero?</span>
+            <textarea name="meta" rows="3" required></textarea>
+          </label>
+
+          <fieldset class="field">
+            <legend>¿Tienes pensado algo para invertir?</legend>
+            <div class="chips">
+              <label><input type="radio" name="inversion" value="Sí, ya sé en qué quiero invertir" required><span>Sí, ya sé en qué</span></label>
+              <label><input type="radio" name="inversion" value="Tengo ideas, pero no estoy segura"><span>Tengo ideas, no estoy segura</span></label>
+              <label><input type="radio" name="inversion" value="No, quiero aprender por dónde empezar"><span>No, quiero aprender por dónde empezar</span></label>
+            </div>
+          </fieldset>
+
+          <label class="field">
+            <span>¿Cuánto ganas aproximadamente al mes?</span>
+            <select name="salario" required>
+              <option value="" selected disabled>Elige un rango</option>
+              <option value="menos_de_$500_dólares">Menos de $500 dólares</option>
+              <option value="entre_$500_y_$750_dólares">Entre $500 y $750 dólares</option>
+              <option value="entre_$750_y_$1.000_dólares">Entre $750 y $1.000 dólares</option>
+              <option value="entre_$1.000_y_2.000_dólares">Entre $1.000 y $2.000 dólares</option>
+              <option value="más_de_$2.000_dólares">Más de $2.000 dólares</option>
+            </select>
+          </label>
+
+          <p class="error" id="formError" role="alert" hidden></p>
+          <button class="btn btn-primary" id="submitBtn" type="submit">Agendar mi llamada</button>
+          <p class="fine">Se abrirá el calendario para que elijas tu horario.</p>
+        </form>
+      </div>
+
+      <div id="doneView" hidden>
+        <svg class="done-star" viewBox="0 0 100 100" aria-hidden="true"><use href="#s-star8"/></svg>
+        <h1>¡Listo, <span id="doneName"></span>!</h1>
+        <p class="lead">Recibimos tus datos. Elige tu horario en el calendario y, si tienes dudas antes, escríbele a Emi.</p>
+        <a class="btn btn-wa" id="waBtn" href="https://wa.me/573148260099?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20del%20Club%20365%20%F0%9F%92%9C" target="_blank" rel="noopener">Habla con Emi 💜</a>
+        <a class="link" id="calLink" href="https://calendar.app.google/MBTR8QHKbUkWTskN9" target="_blank" rel="noopener">¿No se abrió el calendario? Agenda aquí</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<!-- Formas gráficas Feminario (también se usan en el confeti) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="s-star8" viewBox="0 0 100 100"><path fill="currentColor" d="M50 2l8 33 32-12-20 27 30 9-31 7 15 29-28-17-6 33-6-33-28 17 15-29-31-7 30-9L10 23l32 12z"/></symbol>
+    <symbol id="s-pinwheel" viewBox="0 0 100 100"><g fill="currentColor" transform="translate(50 50)"><path d="M4 -4V-46A42 42 0 0 1 46 -4Z"/><path d="M4 -4V-46A42 42 0 0 1 46 -4Z" transform="rotate(90)"/><path d="M4 -4V-46A42 42 0 0 1 46 -4Z" transform="rotate(180)"/><path d="M4 -4V-46A42 42 0 0 1 46 -4Z" transform="rotate(270)"/></g></symbol>
+  </defs>
+</svg>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
