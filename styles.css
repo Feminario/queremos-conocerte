@@ -52,7 +52,7 @@ h1 {
 .photo { margin: 0; }
 .photo img {   /* tamaño original: nunca se amplía ni se recorta */
   display: block;
-  width: 100%; max-width: var(--photo-w);
+  width: 190px; max-width: 100%;   /* pequeña en celular */
   height: auto;
   border-radius: 20px;
 }
@@ -185,15 +185,17 @@ input:focus-visible, select:focus-visible, .cc-btn:focus-visible {
   .btn, .chips span { transition: none; }
 }
 
-/* ---------- Tablet ---------- */
+/* ---------- Tablet: foto a la izquierda ---------- */
 @media (min-width: 600px) {
   .page { padding: 40px 24px 72px; }
-  .card { padding: 28px; }
+  .card { grid-template-columns: 240px minmax(0, 1fr); gap: 32px; padding: 28px; align-items: start; }
+  .side { position: sticky; top: 24px; }
+  .photo img { width: 100%; }
   .row { grid-template-columns: 1fr 1fr; }
 }
 
-/* ---------- Escritorio: foto pequeña a la izquierda, formulario a la derecha ---------- */
+/* ---------- Escritorio ---------- */
 @media (min-width: 900px) {
-  .card { grid-template-columns: 360px minmax(0, 1fr); gap: 48px; padding: 40px; align-items: start; }
-  .side { position: sticky; top: 40px; }
+  .card { grid-template-columns: 360px minmax(0, 1fr); gap: 48px; padding: 40px; }
+  .side { top: 40px; }
 }
