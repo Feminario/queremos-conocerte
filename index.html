@@ -15,15 +15,9 @@
 
   <aside class="photo" aria-hidden="true">
     <img src="assets/foto.jpg" alt="">
-    <svg class="deco deco-star" viewBox="0 0 100 100"><use href="#s-star8"/></svg>
-    <svg class="deco deco-pin" viewBox="0 0 100 100"><use href="#s-pinwheel"/></svg>
   </aside>
 
   <section class="panel">
-    <svg class="bg bg-sun" viewBox="0 0 100 100" aria-hidden="true"><use href="#s-sun"/></svg>
-    <svg class="bg bg-pin" viewBox="0 0 100 100" aria-hidden="true"><use href="#s-pinwheel"/></svg>
-    <svg class="bg bg-spark" viewBox="0 0 100 100" aria-hidden="true"><use href="#s-spark"/></svg>
-    <svg class="bg bg-dots" viewBox="0 0 100 100" aria-hidden="true"><use href="#s-dots"/></svg>
     <div class="card" id="card">
       <img class="brand" src="assets/logo.png" alt="Feminario" width="200" height="39">
 
@@ -105,7 +99,6 @@
       </div>
 
       <div id="doneView" hidden>
-        <svg class="done-star" viewBox="0 0 100 100" aria-hidden="true"><use href="#s-star8"/></svg>
         <h1>¡Listo, <span id="doneName"></span>!</h1>
         <p class="lead">Recibimos tus datos. Elige tu horario en el calendario y, si tienes dudas antes, escríbele a Emi.</p>
         <a class="btn btn-wa" id="waBtn" href="https://wa.me/573148260099?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20del%20Club%20365%20%F0%9F%92%9C" target="_blank" rel="noopener">Habla con Emi 💜</a>
@@ -117,16 +110,6 @@
 
 <canvas id="confetti" aria-hidden="true"></canvas>
 
-<!-- Formas gráficas Feminario (también se usan en el confeti) -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <defs>
-    <symbol id="s-star8" viewBox="0 0 100 100"><path fill="currentColor" d="M50 2l8 33 32-12-20 27 30 9-31 7 15 29-28-17-6 33-6-33-28 17 15-29-31-7 30-9L10 23l32 12z"/></symbol>
-    <symbol id="s-sun" viewBox="0 0 100 100"><g stroke="currentColor" stroke-width="5" stroke-linecap="round"><path d="M50 8V28M50 72V92M8 50H28M72 50H92M20 20L34 34M66 66L80 80M80 20L66 34M34 66L20 80M32 11L38 29M62 71L68 89M89 32L71 38M29 62L11 68M68 11L62 29M38 71L32 89M89 68L71 62M29 38L11 32"/></g></symbol>
-    <symbol id="s-spark" viewBox="0 0 100 100"><path fill="currentColor" d="M50 0Q56 44 100 50Q56 56 50 100Q44 56 0 50Q44 44 50 0Z"/></symbol>
-    <symbol id="s-dots" viewBox="0 0 100 100"><g fill="currentColor"><circle cx="17" cy="17" r="13"/><circle cx="50" cy="17" r="13"/><circle cx="83" cy="17" r="13"/><circle cx="17" cy="50" r="13"/><circle cx="50" cy="50" r="13"/><circle cx="83" cy="50" r="13"/><circle cx="17" cy="83" r="13"/><circle cx="50" cy="83" r="13"/><circle cx="83" cy="83" r="13"/></g></symbol>
-    <symbol id="s-pinwheel" viewBox="0 0 100 100"><g fill="currentColor" transform="translate(50 50)"><path d="M4 -4V-46A42 42 0 0 1 46 -4Z"/><path d="M4 -4V-46A42 42 0 0 1 46 -4Z" transform="rotate(90)"/><path d="M4 -4V-46A42 42 0 0 1 46 -4Z" transform="rotate(180)"/><path d="M4 -4V-46A42 42 0 0 1 46 -4Z" transform="rotate(270)"/></g></symbol>
-  </defs>
-</svg>
 
 <script src="config.js"></script>
 <script src="app.js"></script>
