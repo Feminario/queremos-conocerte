@@ -1,13 +1,15 @@
 :root {
-  --bg: #e3d0ec;       /* único tono de fondo */
+  --bg: #fff;
+  --brand: #7f85af;     /* color del logo de Feminario */
+  --accent: #656b9c;    /* botón y números: tono del logo, algo más profundo para que se lea */
+  --ink: #3b3d5c;       /* texto: azul pizarra suave en vez de negro */
+  --muted: #6a6c88;
+  --card: #f6f5fb;
+  --line: #dcdaec;
   --lime: #ddf0a8;
-  --ink: #1e1e22;
-  --violet: #6e4a86;
   --periwinkle: #c3c8ff;
-  --muted: #55505e;
-  --line: #cdb6da;
   --font: "Montserrat", system-ui, sans-serif;
-  --photo-w: 1277px;    /* ancho original de la foto */
+  --photo-w: 1277px;    /* ancho original de la foto: nunca se amplía */
 }
 
 * { box-sizing: border-box; }
@@ -20,164 +22,163 @@ body {
 }
 [hidden] { display: none !important; }
 
-/* ---------- Tarjeta: foto a la izquierda, formulario a la derecha ---------- */
+/* ---------- Layout: la mitad foto, la mitad formulario (celular y computador) ---------- */
 .page {
-  width: 100%;
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 24px 16px 56px;
+  width: 100%; max-width: 1800px; margin: 0 auto;
+  padding: 12px;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px; align-items: start;
+}
+.side { position: sticky; top: 12px; }   /* acompaña al formulario al bajar */
+.photo { margin: 0; }
+.photo img {
+  display: block; width: 100%; max-width: var(--photo-w); height: auto;
+  border-radius: 14px;
+}
+
+.card {
+  min-width: 0;
+  padding: 14px 12px 20px;
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: 18px;
 }
 
 /* ---------- Encabezado ---------- */
-.brand { display: block; height: 32px; width: auto; }
-.head { margin-bottom: 24px; }
-.intro { margin-bottom: 28px; }
+.brand { display: block; height: 22px; width: auto; }
+.head { margin-bottom: 14px; }
+.intro { margin-bottom: 18px; }
 h1 {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
+  color: var(--brand);
   font-weight: 800;
-  font-size: clamp(30px, 5vw, 46px);
-  line-height: 1.05;
+  font-size: clamp(22px, 5.4vw, 46px);
+  line-height: 1.08;
   letter-spacing: -.03em;
 }
-.lead { margin: 0; font-size: clamp(16px, 2vw, 19px); color: var(--muted); }
-
-
-.card {
-  display: grid; gap: 28px;
-  padding: 20px;
-  background: #f8f6ea;
-  border: 1.5px solid var(--ink);
-  border-radius: 32px;
-}
-.photo { margin: 0; }
-.photo img {   /* tamaño original: nunca se amplía ni se recorta */
-  display: block;
-  width: 190px; max-width: 100%;   /* pequeña en celular */
-  height: auto;
-  border-radius: 20px;
-}
+.lead { margin: 0; font-size: clamp(13px, 1.6vw, 19px); line-height: 1.45; color: var(--muted); }
 
 /* ---------- Formulario ---------- */
-.cols { display: grid; gap: 32px; }
-.col { display: grid; gap: 20px; align-content: start; }
-.row { display: grid; gap: 20px; }
+.cols, .col { display: grid; gap: 14px; }
+.cols { gap: 22px; }
+.col { align-content: start; }
+.row { display: grid; gap: 14px; }
 .step {
-  display: flex; align-items: center; gap: 12px;
-  margin: 0 0 4px;
-  padding-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+  margin: 0 0 2px; padding-bottom: 8px;
   border-bottom: 1.5px solid var(--line);
-  font-size: 20px; font-weight: 800; letter-spacing: -.01em;
+  color: var(--brand);
+  font-size: 15px; font-weight: 800; letter-spacing: -.01em;
 }
 .step b {
-  display: grid; place-items: center;
-  width: 30px; height: 30px; border-radius: 50%;
-  background: var(--ink); color: #fff;
-  font-size: 14px;
+  display: grid; place-items: center; flex: none;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  font-size: 12px;
 }
-.field { display: grid; gap: 8px; border: 0; padding: 0; margin: 0; min-width: 0; }
-.field > span, legend { padding: 0; font-size: 15px; font-weight: 700; }
-legend { margin-bottom: 10px; }
-legend small { display: block; margin-top: 2px; font-size: 13px; font-weight: 500; color: var(--muted); }
+.field { display: grid; gap: 6px; border: 0; padding: 0; margin: 0; min-width: 0; }
+.field > span, legend { padding: 0; font-size: 13px; font-weight: 700; }
+legend { margin-bottom: 8px; }
+legend small { display: block; margin-top: 2px; font-size: 12px; font-weight: 500; color: var(--muted); }
 
 input[type=text], input[type=email], input[type=tel], select {
-  width: 100%;
-  font: inherit;
+  width: 100%; min-width: 0;
+  font: inherit; font-size: 14px;
   color: var(--ink);
   background: #fff;
-  border: 1.5px solid transparent;
-  border-radius: 14px;
-  padding: 13px 16px;
-  min-height: 52px;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  min-height: 46px;
   transition: border-color .15s, box-shadow .15s;
 }
 select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%231e1e22' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%233b3d5c' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 16px center;
-  padding-right: 44px;
+  background-position: right 12px center;
+  padding-right: 32px;
+  text-overflow: ellipsis;
 }
-select:invalid { color: #8a8692; }
+select:invalid { color: #8f90a8; }
 input:focus-visible, select:focus-visible, .cc-btn:focus-visible {
   outline: none;
-  border-color: var(--ink);
+  border-color: var(--accent);
   box-shadow: 0 0 0 4px var(--periwinkle);
 }
 .invalid input, .invalid select, .invalid .cc-btn,
 .field.invalid .chips span { border-color: #c4314b; }
 
 /* ---------- Teléfono con país ---------- */
-.tel { display: flex; gap: 8px; }
-.tel input { flex: 1; min-width: 0; }
+.tel { display: grid; gap: 8px; }
 .cc { position: relative; }
 .cc-btn {
   display: flex; align-items: center; gap: 8px;
-  height: 100%; min-height: 52px;
-  padding: 0 14px;
+  width: 100%; min-height: 46px;
+  padding: 0 12px;
   background: #fff;
-  border: 1.5px solid transparent;
-  border-radius: 14px;
-  font: inherit; color: var(--ink);
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  font: inherit; font-size: 14px; color: var(--ink);
   cursor: pointer;
 }
+.cc-btn svg { margin-left: auto; }
 .cc-btn img { border-radius: 2px; object-fit: cover; }
 .cc-list {
   position: absolute; z-index: 5; top: calc(100% + 6px); left: 0;
-  width: min(300px, 80vw); max-height: 280px; overflow: auto;
+  width: min(300px, 90vw); max-height: 280px; overflow: auto;
   margin: 0; padding: 6px; list-style: none;
-  background: #fff; border: 1.5px solid var(--ink); border-radius: 16px;
-  box-shadow: 0 16px 32px -16px rgba(30, 30, 34, .5);
+  background: #fff; border: 1.5px solid var(--accent); border-radius: 14px;
+  box-shadow: 0 16px 32px -16px rgba(59, 61, 92, .45);
 }
 .cc-list li {
   display: flex; align-items: center; gap: 10px;
-  padding: 10px; border-radius: 10px; cursor: pointer; font-size: 15px;
+  padding: 10px; border-radius: 10px; cursor: pointer; font-size: 14px;
 }
 .cc-list li:hover, .cc-list li[aria-selected=true] { background: var(--lime); }
 .cc-list li span:last-child { margin-left: auto; color: var(--muted); }
 
 /* ---------- Opciones ---------- */
-.chips { display: grid; gap: 10px; }
+.chips { display: grid; gap: 8px; }
 .chips label { display: block; cursor: pointer; }
 .chips input { position: absolute; opacity: 0; pointer-events: none; }
 .chips span {
   display: block;
-  padding: 13px 18px;
+  padding: 10px 12px;
   background: #fff;
-  border: 1.5px solid transparent;
-  border-radius: 14px;
-  font-size: 15px;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  font-size: 13px; line-height: 1.35;
   transition: background .15s, border-color .15s;
 }
-.chips label:hover span { border-color: var(--line); }
-.chips input:checked + span { background: var(--lime); border-color: var(--ink); font-weight: 700; }
-.chips input:focus-visible + span { box-shadow: 0 0 0 4px var(--periwinkle); border-color: var(--ink); }
-/* Metas: píldoras que se acomodan en filas */
-.pills { display: flex; flex-wrap: wrap; gap: 10px; }
-.pills span { border-radius: 999px; padding: 11px 18px; }
+.chips label:hover span { border-color: var(--brand); }
+.chips input:checked + span { background: var(--lime); border-color: var(--accent); font-weight: 700; }
+.chips input:focus-visible + span { box-shadow: 0 0 0 4px var(--periwinkle); border-color: var(--accent); }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pills span { border-radius: 999px; padding: 9px 14px; }
 
 /* ---------- Envío ---------- */
-.submit { display: grid; gap: 12px; margin-top: 32px; }
+.submit { display: grid; gap: 10px; margin-top: 22px; }
 .btn {
   display: flex; align-items: center; justify-content: center;
-  min-height: 60px; padding: 0 32px;
+  min-height: 52px; padding: 0 20px;
   border: 0; border-radius: 999px;
-  font: 800 18px/1 var(--font); letter-spacing: -.01em;
+  font: 800 16px/1.1 var(--font); letter-spacing: -.01em; text-align: center;
   text-decoration: none; cursor: pointer;
   transition: transform .12s, box-shadow .12s;
 }
 .btn:hover { transform: translateY(-2px); }
 .btn:active { transform: translateY(0); }
 .btn:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--periwinkle); }
-.btn-primary { background: var(--ink); color: #fff; }
+.btn-primary, .btn-wa { background: var(--accent); color: #fff; }
 .btn-primary:disabled { opacity: .6; cursor: progress; transform: none; }
-.btn-wa { background: var(--ink); color: #fff; }
-.fine { margin: 0; text-align: center; font-size: 13px; color: var(--muted); }
-.error { margin: 0; text-align: center; color: #b3263f; font-weight: 700; font-size: 14px; }
+.fine { margin: 0; text-align: center; font-size: 12px; color: var(--muted); }
+.error { margin: 0; text-align: center; color: #b3263f; font-weight: 700; font-size: 13px; }
 
 /* ---------- Éxito ---------- */
-.done { max-width: 560px; margin: 8vh auto 0; text-align: center; }
-.done .lead { margin-bottom: 28px; }
-.link { display: block; margin-top: 18px; color: var(--ink); font-size: 14px; }
+.done { text-align: center; padding: 4vh 0; }
+.done .lead { margin-bottom: 22px; }
+.link { display: block; margin-top: 16px; color: var(--ink); font-size: 13px; }
 
 #confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50; }
 
@@ -185,17 +186,33 @@ input:focus-visible, select:focus-visible, .cc-btn:focus-visible {
   .btn, .chips span { transition: none; }
 }
 
-/* ---------- Tablet: foto a la izquierda ---------- */
+/* ---------- Tablet ---------- */
 @media (min-width: 600px) {
-  .page { padding: 40px 24px 72px; }
-  .card { grid-template-columns: 240px minmax(0, 1fr); gap: 32px; padding: 28px; align-items: start; }
-  .side { position: sticky; top: 24px; }
-  .photo img { width: 100%; }
-  .row { grid-template-columns: 1fr 1fr; }
+  .page { padding: 24px; gap: 24px; }
+  .side { top: 24px; }
+  .photo img { border-radius: 24px; }
+  .card { padding: 28px 28px 32px; border-radius: 28px; }
+  .brand { height: 30px; }
+  .head { margin-bottom: 20px; }
+  .step { font-size: 18px; gap: 10px; }
+  .step b { width: 28px; height: 28px; font-size: 14px; }
+  .field > span, legend { font-size: 14px; }
+  input[type=text], input[type=email], input[type=tel], select, .cc-btn { font-size: 15px; min-height: 50px; padding-left: 16px; padding-right: 16px; }
+  select { padding-right: 40px; }
+  .chips span { font-size: 15px; padding: 12px 16px; }
+  .pills span { padding: 11px 18px; }
+  .tel { grid-template-columns: auto 1fr; }
+  .cc-btn { width: auto; }
+  .btn { min-height: 58px; font-size: 18px; }
+  .fine { font-size: 13px; }
 }
 
 /* ---------- Escritorio ---------- */
-@media (min-width: 900px) {
-  .card { grid-template-columns: 360px minmax(0, 1fr); gap: 48px; padding: 40px; }
-  .side { top: 40px; }
+@media (min-width: 960px) {
+  .page { gap: 32px; padding: 32px; }
+  .side { top: 32px; }
+  .card { padding: 40px 44px 44px; }
+  .row { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .cols, .col { gap: 20px; }
+  .cols { gap: 32px; }
 }
