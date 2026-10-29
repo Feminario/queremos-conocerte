@@ -30,8 +30,7 @@ body {
 /* ---------- Foto ---------- */
 .photo {
   position: relative;
-  height: 46vh;
-  min-height: 300px;
+  aspect-ratio: 5 / 4;
   background: var(--lime);
   overflow: hidden;
   border-radius: 0 0 40px 40px;
@@ -39,15 +38,22 @@ body {
 .photo img {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: 50% 22%;
+  object-position: 52% 30%;
   display: block;
 }
 .deco { position: absolute; }
 .deco-star { width: 64px; right: 16px; bottom: 28px; color: var(--cream); }
-.deco-pin { width: 56px; left: 14px; top: 16px; color: var(--lime); }
+.deco-pin { width: 56px; left: 14px; top: 16px; color: var(--orange); }
 
 /* ---------- Panel / tarjeta ---------- */
-.panel { padding: 0 16px 40px; margin-top: -48px; position: relative; z-index: 1; }
+.panel {
+  padding: 0 16px 40px; margin-top: -48px; position: relative; z-index: 1;
+  isolation: isolate;
+  background:
+    radial-gradient(60% 40% at 100% 0%, rgba(195, 200, 255, .75), transparent 70%),
+    radial-gradient(55% 35% at 0% 100%, rgba(221, 240, 168, .7), transparent 70%),
+    var(--lilac);
+}
 .card {
   background: var(--cream);
   border-radius: 28px;
@@ -56,7 +62,15 @@ body {
   margin: 0 auto;
   box-shadow: 0 18px 40px -20px rgba(30, 30, 34, .35);
 }
-.brand { display: block; height: 45px; width: auto; margin: -6px 0 6px -8px; }
+.brand { display: block; height: 39px; width: auto; margin: 0 0 18px; }
+
+/* Formas de fondo */
+.panel { overflow: hidden; }
+.bg { position: absolute; z-index: -1; pointer-events: none; }
+.bg-sun { width: 120px; color: var(--orange); right: -24px; top: 24px; opacity: .9; }
+.bg-pin { width: 88px; color: var(--lime); left: -18px; top: 120px; }
+.bg-spark { width: 70px; color: var(--periwinkle); right: 8%; bottom: 90px; }
+.bg-dots { width: 80px; color: var(--pink); left: 6%; bottom: 40px; }
 legend small { font-weight: 400; color: var(--muted); }
 h1 {
   margin: 0 0 8px;
@@ -183,14 +197,25 @@ input:focus-visible, textarea:focus-visible, select:focus-visible, .cc-btn:focus
   .card { padding: 36px 36px 30px; }
 }
 @media (min-width: 960px) {
-  .page { grid-template-columns: minmax(380px, 5fr) 6fr; }
+  .page { grid-template-columns: 1fr 1fr; }
   .photo {
     position: sticky; top: 0;
-    height: 100vh; min-height: 0;
+    height: 100vh; aspect-ratio: auto;
     border-radius: 0 56px 56px 0;
+    display: grid; place-items: center;
+    padding: 4vh 40px;
+  }
+  .photo img {
+    height: 100%; width: auto; max-width: 100%;
+    aspect-ratio: 4 / 5;
+    border-radius: 36px;
   }
   .panel { margin: 0; padding: 48px 40px; display: flex; align-items: center; }
   .card { margin: 0 auto; }
-  .deco-star { width: 90px; right: 28px; bottom: 36px; }
-  .deco-pin { width: 76px; left: 24px; top: 24px; }
+  .deco-star { width: 80px; right: 28px; bottom: 28px; }
+  .deco-pin { width: 70px; left: 24px; top: 24px; }
+  .bg-sun { width: 150px; top: 40px; right: -40px; }
+  .bg-pin { width: 60px; top: auto; bottom: 160px; left: 10px; }
+  .bg-spark { width: 56px; bottom: 36px; right: 12px; }
+  .bg-dots { width: 52px; left: 14px; bottom: 60px; }
 }
