@@ -50,6 +50,18 @@
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") toggleList(false); });
   renderCountry();
 
+  // ---------- Desplegable de metas (selección múltiple) ----------
+  const msBtn = $("#msBtn"), msList = $("#msList"), msText = $("#msText");
+  const toggleMs = (open) => { msList.hidden = !open; msBtn.setAttribute("aria-expanded", String(open)); };
+  msBtn.addEventListener("click", () => toggleMs(msList.hidden));
+  document.addEventListener("click", (e) => { if (!$("#ms").contains(e.target)) toggleMs(false); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") toggleMs(false); });
+  msList.addEventListener("change", () => {
+    const sel = [...msList.querySelectorAll("input:checked")].map((i) => i.value);
+    msText.textContent = sel.length ? sel.join(", ") : "Elige una o varias opciones";
+    msText.classList.toggle("ph", !sel.length);
+  });
+
   // ---------- Validación ----------
   const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
 
@@ -62,11 +74,10 @@
     const digits = f.telefono.value.replace(/\D/g, "");
     mark(f.telefono, digits.length < 6 || digits.length > 12);
     mark(f.salario, !f.salario.value);
-    ["meta", "inversion"].forEach((g) => {
-      const none = !form.querySelector(`input[name=${g}]:checked`);
-      form.querySelector(`fieldset[data-group=${g}]`).classList.toggle("invalid", none);
-      if (none) bad.push(form.querySelector(`input[name=${g}]`));
-    });
+    mark(f.inversion, !f.inversion.value);
+    const none = !form.querySelector("input[name=meta]:checked");
+    form.querySelector("[data-group=meta]").classList.toggle("invalid", none);
+    if (none) bad.push($("#msBtn"));
     return bad;
   }
 
@@ -94,7 +105,7 @@
       "Email": f.email.value.trim(),
       "Salario": f.salario.value,
       "¿Qué quieres lograr con tu dinero?": [...form.querySelectorAll("input[name=meta]:checked")].map((i) => i.value).join(", "),
-      "¿Tienes dinero disponible para invertir?": form.querySelector("input[name=inversion]:checked").value,
+      "¿Tienes dinero disponible para invertir?": f.inversion.value,
       "Fecha": new Date().toISOString(),
       "Origen": cfg.ORIGEN,
       "Campaña": utm.get("utm_campaign") || "",
