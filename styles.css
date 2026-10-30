@@ -22,11 +22,11 @@ body {
 }
 [hidden] { display: none !important; }
 
-/* ---------- Layout: la mitad foto, la mitad formulario (celular y computador) ---------- */
+/* ---------- Layout: un cuarto foto, tres cuartos formulario (celular y computador) ---------- */
 .page {
   width: 100%; max-width: 1800px; margin: 0 auto;
   padding: 12px;
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
   gap: 12px; align-items: start;
 }
 .side { position: sticky; top: 12px; }   /* acompaña al formulario al bajar */
