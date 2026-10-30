@@ -9,8 +9,8 @@
   --pink: #ff9fb5;
   --muted: #5d5a66;
   --line: #d9d3e0;
-  --display: "Bricolage Grotesque", system-ui, sans-serif;
-  --body: "DM Sans", system-ui, sans-serif;
+  --display: "Montserrat", system-ui, sans-serif;
+  --body: "Montserrat", system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
