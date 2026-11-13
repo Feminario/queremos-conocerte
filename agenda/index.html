@@ -33,9 +33,8 @@ img{max-width:100%;display:block}
 .btn.borde{background:transparent;color:var(--tinta)}
 
 /* barra */
-.top{display:flex;align-items:center;justify-content:space-between;padding-block:18px}
+.top{display:flex;align-items:center;padding-block:18px}
 .top img{height:36px;width:auto;filter:brightness(0)}
-.top .btn{padding:12px 20px;font-size:14px}
 
 /* hero */
 .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding-block:30px 70px}
@@ -43,8 +42,6 @@ img{max-width:100%;display:block}
 .hero h1{font-size:clamp(46px,8.2vw,104px);color:var(--tinta)}
 .hero h1 span{display:inline-block;background:var(--crema);padding:0 .14em;border-radius:.18em;transform:rotate(-1.5deg)}
 .hero p.lead{font-size:clamp(17px,2vw,20px);max-width:30em;margin:22px 0 28px;font-weight:500}
-.datos{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-.datos span{background:var(--crema);border:2px solid var(--tinta);border-radius:999px;font-weight:700;font-size:13.5px;padding:8px 15px}
 .collage{position:relative;min-height:520px}
 .foto{position:absolute;margin:0;border:3px solid var(--tinta);border-radius:26px;overflow:hidden;background:var(--crema);box-shadow:6px 8px 0 var(--tinta)}
 .foto img{width:100%;height:100%;object-fit:cover}
@@ -173,7 +170,6 @@ footer img{height:30px;margin:0 auto 12px;filter:brightness(0) invert(1)}
 
 <header class="wrap top">
   <img src="assets/logo-feminario.png" alt="Feminario">
-  <a class="btn lima" href="#agenda">Agendar 15 min</a>
 </header>
 
 <main>
@@ -183,7 +179,6 @@ footer img{height:30px;margin:0 auto 12px;filter:brightness(0) invert(1)}
       <h1 data-anim>Queremos <span>conocerte</span></h1>
       <p class="lead" data-anim>Cuéntanos un poco de ti y agenda 15 minutos con nosotras. Sin afán, sin términos raros y sin que tengas que saber de plata.</p>
       <a class="btn" href="#agenda" data-anim>Agendar mi cita ↓</a>
-      <div class="datos" data-anim><span>15 minutos</span><span>Videollamada por Google Meet</span><span>Hora de Colombia</span></div>
     </div>
     <div class="collage" aria-hidden="true">
       <figure class="foto f1"><img src="assets/fotos/cafe.jpg" alt="" loading="eager"></figure>
