@@ -97,7 +97,9 @@ a.vive:hover{transform:translate(-3px,-4px);box-shadow:9px 11px 0 var(--tinta)}
 @keyframes salta{50%{transform:translateY(7px)}}
 @media (prefers-reduced-motion:reduce){.agenda-tit span{animation:none}}
 .quienes{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:center}
-.quienes .foto{position:relative;box-shadow:8px 10px 0 var(--tinta);transform:rotate(-2deg);aspect-ratio:16/10}
+.quienes{grid-template-columns:.7fr 1.3fr}
+.quienes .foto{position:relative;box-shadow:8px 10px 0 var(--tinta);transform:rotate(-2deg);aspect-ratio:1022/1329;max-width:400px;margin-inline:auto;background:#fff}
+.quienes .foto img{object-fit:contain}
 .forbes{display:inline-flex;align-items:center;gap:10px;background:var(--tinta);color:var(--crema);border-radius:14px;padding:10px 16px;margin-bottom:18px;font-size:13.5px;font-weight:600}
 .forbes b{font:800 18px 'MuseoModerno',sans-serif;color:var(--lima)}
 .quienes p{font-size:17px;margin:0 0 14px;font-weight:500}
@@ -226,13 +228,13 @@ footer img{height:30px;margin:0 auto 12px;filter:brightness(0) invert(1)}
 
   <section class="s-peri">
     <div class="wrap quienes">
-      <figure class="foto" data-rev><img src="assets/fotos/forbes.jpg" alt="Andrea y Valentina, fundadoras de Feminario, Forbes Colombia 30 Under 30 2026"></figure>
+      <figure class="foto" data-rev><img src="assets/fotos/forbes-nota.jpg" alt="Forbes Colombia: 30 Under 30 2026, Andrea García Gómez y Valentina González Ramírez"></figure>
       <div data-rev>
         <div class="forbes"><b>Forbes</b> Colombia · 30 Under 30 2026</div>
         <h2 class="t-sec">Quiénes te van a escuchar</h2>
         <p>Somos Andrea y Valentina, fundadoras de Feminario. Creemos que hablar de plata debe ser simple, cercano y entre mujeres.</p>
-        <p>En esta cita no venimos a vender nada a ciegas: queremos conocerte y decirte con claridad qué sigue para ti.</p>
-        <p class="directo"><b>Y sí:</b> tus asesorías son con nosotras, directamente.</p>
+        <p>En esta cita hablamos de Feminario: cómo funciona y si te sirve ahora. Queremos conocerte y decirte con claridad qué sigue para ti.</p>
+        <p class="directo"><b>Y sí:</b> dentro del curso, la asesoría es con nosotras, directamente.</p>
       </div>
     </div>
   </section>
@@ -248,7 +250,7 @@ footer img{height:30px;margin:0 auto 12px;filter:brightness(0) invert(1)}
         </article>
         <article class="vive v-ase" data-rev>
           <div class="vfoto"><img src="assets/fotos/ventana-baile.jpg" alt="Andrea y Valentina celebrando" loading="lazy" style="object-position:45% 40%"></div>
-          <div class="vtxt"><h3>Asesoría</h3><p>Conversaciones personalizadas para decidir con tu plata.</p></div>
+          <div class="vtxt"><h3>Asesoría</h3><p>Dentro del curso, asesoría directa con Andrea y Valentina.</p></div>
         </article>
         <article class="vive v-com" data-rev>
           <div class="vfoto"><img src="assets/fotos/comunidad.jpg" alt="Comunidad de Feminario con tote bags «El dinero es poder decidir»" loading="lazy"></div>
