@@ -169,13 +169,17 @@ details p{margin:0;padding:0 22px 20px;font-weight:500}
 .atras:hover{color:var(--tinta)}
 .atras[hidden]{display:none}
 .num{font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--lila-hondo);margin-bottom:10px}
-.preg{font-size:clamp(26px,4.2vw,40px);margin-bottom:8px}
+.preg{font-size:clamp(24px,3.6vw,34px);margin-bottom:8px;max-width:22em}
 .ayuda{color:var(--muted);font-weight:500;margin:0 0 22px;font-size:15px}
 .opts{display:grid;gap:10px;margin-top:22px}
 .opt{display:flex;align-items:center;gap:14px;text-align:left;cursor:pointer;width:100%;background:#fff;border:2.5px solid var(--tinta);border-radius:18px;padding:15px 18px;font:600 16px/1.3 'Montserrat',sans-serif;color:var(--tinta);transition:transform .15s,background .15s,box-shadow .15s}
 .opt:hover{transform:translate(-2px,-2px);box-shadow:3px 4px 0 var(--tinta)}
 .opt .letra{flex:none;width:30px;height:30px;border-radius:9px;border:2px solid var(--tinta);display:grid;place-items:center;font-weight:800;font-size:13px;background:var(--crema)}
-.opt[aria-pressed=true]{background:var(--lima)}
+.cuenta{display:inline-block;background:var(--tinta);color:var(--lima);border-radius:999px;font-weight:800;font-size:12.5px;padding:5px 12px;margin:4px 0 2px}
+.opt[aria-pressed=true]{background:var(--lima);box-shadow:3px 4px 0 var(--tinta)}
+.opt[aria-pressed=true] .letra{font-size:0}
+.opt[aria-pressed=true] .letra::after{content:"✓";font-size:16px}
+.opt .tt{flex:1}
 .opt[aria-pressed=true] .letra{background:var(--tinta);color:var(--lima)}
 .opt:nth-child(5n+1) .letra{background:var(--peri)}.opt:nth-child(5n+2) .letra{background:var(--rosa)}.opt:nth-child(5n+3) .letra{background:var(--lila)}.opt:nth-child(5n+4) .letra{background:var(--naranja)}
 .opt[aria-pressed=true] .letra{background:var(--tinta)!important}
@@ -368,24 +372,31 @@ const CONFIG = {
    PREGUNTAS (los puntos clasifican a la lead: alta, media o baja)
    ============================================================ */
 const PREGUNTAS = [
-  { id:"momento", tipo:"una", texto:"¿Cómo está tu plata hoy?", opciones:[
-    ["Estoy empezando a ordenar mis finanzas",1],["Ya ahorro y quiero empezar a invertir",3],["Ya invierto y quiero una estrategia clara",3],["Tengo deudas y quiero salir de ellas",1] ]},
-  { id:"metas", tipo:"varias", texto:"¿Qué quieres lograr con tu plata este año?", ayuda:"Marca todas las que quieras.", opciones:[
+  { id:"momento", grupo:"Tu momento", tipo:"varias", max:3, texto:"¿Qué es lo que más te duele de tu plata hoy?", ayuda:"Elige hasta 3. Así llegamos a la cita sabiendo cómo ayudarte.", opciones:[
+    ["No sé a dónde se me va la plata",1],
+    ["No logro ahorrar",1],
+    ["Tengo deudas que me pesan",1],
+    ["No sé por dónde empezar a invertir",2],
+    ["Invierto, pero sin una estrategia clara",3],
+    ["Me da miedo perder mi plata o caer en estafas",2],
+    ["Dependo de otra persona para decidir sobre mi plata",1],
+    ["Quiero hacer crecer mi emprendimiento",2] ]},
+  { id:"metas", grupo:"Tu momento", tipo:"varias", texto:"¿Qué quieres lograr con tu plata este año?", ayuda:"Marca todas las que quieras.", opciones:[
     ["Armar mi fondo de emergencia",1],["Salir de deudas",1],["Empezar a invertir",2],["Comprar vivienda",2],["Pensionarme con tranquilidad",2],["Crecer mi negocio",2],["Entender mi plata sin sentirme perdida",1] ]},
-  { id:"tiempo", tipo:"una", texto:"¿Cuánto tiempo a la semana le puedes dedicar a tus finanzas?", opciones:[
+  { id:"tiempo", grupo:"Tu momento", tipo:"una", texto:"¿Cuánto tiempo a la semana le puedes dedicar a tus finanzas?", opciones:[
     ["Menos de 1 hora",0],["Entre 1 y 3 horas",2],["Más de 3 horas",3] ]},
-  { id:"ahorro", tipo:"una", texto:"¿Cuánto podrías separar cada mes para ahorrar o invertir?", opciones:[
+  { id:"ahorro", grupo:"Tu momento", tipo:"una", texto:"¿Cuánto podrías separar cada mes para ahorrar o invertir?", opciones:[
     ["Todavía no tengo un excedente",0],["Menos de $300.000",1],["Entre $300.000 y $1.000.000",3],["Más de $1.000.000",4] ]},
-  { id:"comunidad", tipo:"una", texto:"¿Has hecho algún programa de Feminario?", opciones:[
+  { id:"comunidad", grupo:"Feminario y tú", tipo:"una", texto:"¿Has hecho algún programa de Feminario?", opciones:[
     ["Es la primera vez que las conozco",1],["He ido a una charla o sesión gratuita",2],["Soy o fui parte de un programa de Feminario",3] ]},
-  { id:"inversion", tipo:"una", texto:"Si un acompañamiento te sirve, ¿podrías invertir en ti sin afectar tus gastos básicos?", opciones:[
+  { id:"inversion", grupo:"Feminario y tú", tipo:"una", texto:"Si un acompañamiento te sirve, ¿podrías invertir en ti sin afectar tus gastos básicos?", opciones:[
     ["Sí, si tiene sentido para mí",4],["Tendría que revisarlo con calma",2],["No por ahora",0] ]},
-  { id:"decide", tipo:"una", texto:"¿Decides sola sobre tu plata?", ayuda:"Si lo hablas con tu pareja o socia, puedes invitarla a la cita.", opciones:[
+  { id:"decide", grupo:"Feminario y tú", tipo:"una", texto:"¿Decides sola sobre tu plata?", ayuda:"Si lo hablas con tu pareja o socia, puedes invitarla a la cita.", opciones:[
     ["Sí, decido sola",1],["Lo hablo con alguien y la invitaré a la llamada",1] ]},
-  { id:"confirmaWA", tipo:"una", texto:"Te escribiremos por WhatsApp para confirmar tu cita. Si no respondes, damos el cupo a otra mujer.", opciones:[
+  { id:"confirmaWA", grupo:"Feminario y tú", tipo:"una", texto:"Te escribiremos por WhatsApp para confirmar tu cita. Si no respondes, damos el cupo a otra mujer.", opciones:[
     ["Entiendo y voy a responder",0],["No voy a responder, solo estoy curioseando",-99] ]}
 ];
-const PUNTAJE_MAX = PREGUNTAS.reduce((s,p)=>s+(p.tipo==="varias"?p.opciones.reduce((a,o)=>a+o[1],0):Math.max(...p.opciones.map(o=>o[1]))),0);
+const PUNTAJE_MAX = PREGUNTAS.reduce((s,p)=>s+(p.tipo==="varias"?p.opciones.map(o=>o[1]).sort((a,b)=>b-a).slice(0,p.max||99).reduce((a,b)=>a+b,0):Math.max(...p.opciones.map(o=>o[1]))),0);
 const nivelDe = p => { const r=p/PUNTAJE_MAX; return r>=0.6?"alta":r>=0.35?"media":"baja"; };
 const CAMPOS = [
   { id:"nombre",   texto:"Para empezar, ¿cómo te llamas?", ayuda:"Nombre y apellido.", ph:"Tu nombre completo", type:"text", auto:"name",
@@ -446,7 +457,8 @@ const pausa=(fn,ms)=>setTimeout(fn,ms);
 /* ---------- Preguntas ---------- */
 function htmlPregunta(q,i,t){
   const sel=E.resp[q.id];
-  return `<div class="num">Pregunta ${i+1} de ${t}</div><h2 class="preg">${esc(q.texto)}</h2>${q.ayuda?`<p class="ayuda">${esc(q.ayuda)}</p>`:""}
+  const cuenta=q.max?`<div class="cuenta" id="cuenta" aria-live="polite">${(sel||[]).length} de ${q.max} elegidas</div>`:"";
+  return `<div class="num">${esc(q.grupo||"Pregunta")} · ${i+1} de ${t}</div><h2 class="preg">${esc(q.texto)}</h2>${q.ayuda?`<p class="ayuda">${esc(q.ayuda)}</p>`:""}${cuenta}
   <div class="opts" role="group">${q.opciones.map((o,k)=>`<button type="button" class="opt" data-k="${k}" aria-pressed="${q.tipo==="varias"?(sel||[]).includes(k):sel===k}"><span class="letra">${LETRAS[k]}</span><span>${esc(o[0])}</span></button>`).join("")}</div>
   ${q.tipo==="varias"?`<div class="nav"><button class="btn" id="sig" type="button">Continuar →</button><span class="error" id="err"></span></div>`:`<div class="error" id="err"></div>`}`;
 }
@@ -454,8 +466,14 @@ function ligarPregunta(q){
   document.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
     const k=Number(b.dataset.k);
     if(q.tipo==="varias"){
-      const a=E.resp[q.id]||[]; E.resp[q.id]=a.includes(k)?a.filter(x=>x!==k):a.concat(k);
+      const a=E.resp[q.id]||[];
+      if(!a.includes(k) && q.max && a.length>=q.max){
+        document.getElementById("err").textContent="Puedes elegir hasta "+q.max+". Quita una para cambiarla.";
+        if(anima) G.fromTo(b,{x:-6},{x:0,duration:.4,ease:"elastic.out(1,.3)"}); return; }
+      E.resp[q.id]=a.includes(k)?a.filter(x=>x!==k):a.concat(k);
       b.setAttribute("aria-pressed",E.resp[q.id].includes(k));
+      const cu=document.getElementById("cuenta"); if(cu) cu.textContent=E.resp[q.id].length+" de "+q.max+" elegidas";
+      const er=document.getElementById("err"); if(er) er.textContent="";
       if(anima) G.fromTo(b,{scale:.97},{scale:1,duration:.3,ease:"back.out(3)"});
     }else{
       E.resp[q.id]=k;
@@ -482,7 +500,7 @@ function bloqueo(){
 
 /* ---------- Campos (uno por pantalla) ---------- */
 function htmlCampo(c,i,t){
-  return `<div class="num">Pregunta ${i+1} de ${t}</div><h2 class="preg">${esc(c.texto)}</h2>${c.ayuda?`<p class="ayuda">${esc(c.ayuda)}</p>`:""}
+  return `<div class="num">Para agendar · ${i+1} de ${t}</div><h2 class="preg">${esc(c.texto)}</h2>${c.ayuda?`<p class="ayuda">${esc(c.ayuda)}</p>`:""}
   <input class="campo" id="campo" type="${c.type}" autocomplete="${c.auto}" placeholder="${esc(c.ph)}" value="${esc(E.datos[c.id]||"")}" ${c.type==="tel"?'inputmode="tel"':""} aria-label="${esc(c.texto)}">
   <div class="error" id="err" role="alert"></div>
   <div class="nav"><button class="btn" id="sig" type="button">Continuar →</button><span class="tecla">o presiona Enter ↵</span></div>`;
@@ -515,7 +533,7 @@ async function cargarDisponibilidad(){
 }
 function fechasLibres(){ return Object.keys(E.dias).filter(f=>E.dias[f].length).sort(); }
 function htmlDia(i,t){
-  return `<div class="num">Pregunta ${i+1} de ${t}</div><h2 class="preg">¿Qué día te queda bien?</h2><p class="ayuda">Hora de Colombia. La cita dura ${CONFIG.DURACION_MIN} minutos por Google Meet.</p>
+  return `<div class="num">Tu horario · ${i+1} de ${t}</div><h2 class="preg">¿Qué día te queda bien?</h2><p class="ayuda">Hora de Colombia. La cita dura ${CONFIG.DURACION_MIN} minutos por Google Meet.</p>
     <div id="zona"><p class="ayuda">Buscando horarios libres…</p></div>`;
 }
 async function ligarDia(){
@@ -534,7 +552,7 @@ async function ligarDia(){
 }
 function htmlHora(i,t){
   const hs=E.dias[E.diaSel]||[];
-  return `<div class="num">Pregunta ${i+1} de ${t}</div><h2 class="preg">¿A qué hora?</h2><p class="ayuda">${esc(fechaTxt(E.diaSel))} · hora de Colombia</p>
+  return `<div class="num">Tu horario · ${i+1} de ${t}</div><h2 class="preg">¿A qué hora?</h2><p class="ayuda">${esc(fechaTxt(E.diaSel))} · hora de Colombia</p>
     <div class="horas" role="group" aria-label="Horas disponibles">${hs.map(h=>`<button type="button" class="hora" data-h="${h}" aria-pressed="${h===E.horaSel}">${hora12(h)}</button>`).join("")}</div>
     <div class="resumen" id="resumen" hidden></div><div class="error" id="err" role="alert"></div>
     <div class="nav"><button class="btn lima" id="confirmar" type="button" disabled>Confirmar mi cita ✓</button></div>`;
@@ -610,6 +628,15 @@ function animarPagina(){
   }
 }
 
+document.addEventListener("keydown",e=>{
+  if(e.ctrlKey||e.metaKey||e.altKey) return;
+  const t=e.target; if(t&&(t.tagName==="INPUT"||t.tagName==="TEXTAREA"||t.tagName==="SUMMARY")) return;
+  if(!document.getElementById("cuerpo").contains(t) && t!==document.body) return;
+  const opts=[...document.querySelectorAll("#cuerpo .opt")];
+  const k=LETRAS.indexOf((e.key||"").toUpperCase());
+  if((e.key||"").length===1 && k>=0 && opts[k]){ e.preventDefault(); opts[k].click(); }
+  else if(e.key==="Enter"){ const sg=document.getElementById("sig"); if(sg){ e.preventDefault(); sg.click(); } }
+});
 mostrar(1);
 animarPagina();
 (function(){
