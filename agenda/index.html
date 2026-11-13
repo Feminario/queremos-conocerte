@@ -91,32 +91,53 @@ a.vive:hover{transform:translate(-3px,-4px);box-shadow:9px 11px 0 var(--tinta)}
 .vtxt h3{font-size:26px;margin-bottom:6px}
 .vtxt p{margin:0;font-weight:500;font-size:15px}
 
-/* portadas de los cursos */
-.vfoto-cursos{position:relative;aspect-ratio:1488/544;background:var(--lima);container-type:inline-size}
-.vfoto-cursos::before{content:"";position:absolute;left:-14%;top:-30%;width:42%;aspect-ratio:1;border-radius:50%;background:var(--peri)}
-.cv{position:absolute;aspect-ratio:1.8;overflow:hidden;border-radius:1.2cqw;display:flex;align-items:center;justify-content:center;text-align:center;padding:3cqw;box-shadow:0 .4cqw 1.2cqw rgba(30,30,34,.12)}
-.cv b{position:relative;z-index:2;font:800 3.1cqw/1.05 'MuseoModerno','Montserrat',sans-serif}
-.cv small{display:block;font:800 1.15cqw/1.1 'Montserrat',sans-serif;text-transform:uppercase;margin-top:.6cqw;color:var(--tinta);text-align:left}
-.cv .mk{position:absolute;top:1.6cqw;right:1.8cqw;height:1.9cqw;width:auto}
-.cv .e{position:absolute}
-.cv1{left:4%;top:5.5%;width:27.6%;background:#6F9B6B;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:1.6cqw 1.6cqw;color:#F8F6EA;transform:rotate(-1deg)}
-.cv1 .mk,.cv3 .mk{filter:brightness(0) invert(1) sepia(.2)}
-.cv1 b{text-align:left;font-size:2.9cqw}
-.e-o{width:6cqw;height:6cqw;right:1cqw;bottom:-1cqw;color:#FF9C5A}
-.cv2{left:38.2%;top:1%;width:29.6%;background:#FFB877;color:var(--tinta)}
-.cv2 .mk{filter:brightness(0)}
-.e-c{width:21cqw;height:21cqw;left:50%;top:50%;transform:translate(-50%,-50%);color:#F6F4E8;z-index:1}
-.cv3{left:70.4%;top:20.6%;width:28.2%;background:#8585AF;color:#FBE7D3}
-.aro{position:absolute;width:9cqw;height:9cqw;border:2.4cqw solid #FBE7D3;border-radius:50%}
-.a1{left:-3.5cqw;top:-2.5cqw}.a2{right:-3cqw;bottom:-3.5cqw}
-.cv4{left:1.8%;top:53.9%;width:28.7%;background:#F8DDFB;color:#B4D96B;flex-direction:column;align-items:flex-start;justify-content:center}
-.cv4 b{text-align:left}.cv4 b{font-size:3.6cqw;color:#A9D15D}
-.cv4 .mk{filter:brightness(0) saturate(0) opacity(.6)}
-.cv5{left:38.8%;top:55%;width:27.8%;background:#D3D3FF;color:#6A6C9A}
-.cv5 .mk{filter:brightness(0) opacity(.5)}
-.e-l1{width:14cqw;height:14cqw;right:-3cqw;top:-5cqw;color:#EFFFC9}.e-l2{width:12cqw;height:12cqw;left:-2cqw;bottom:-4cqw;color:#EFFFC9}
-.v-cur{grid-column:span 4!important}.v-pod{grid-column:span 2!important}
 .v-app{background:var(--peri)}.v-ase{background:var(--lima)}.v-com{background:var(--rosa)}.v-cur{background:var(--naranja)}.v-pod{background:var(--crema)}
+
+/* pasos: línea de tiempo vertical */
+.pasos-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
+.pasos-izq{position:sticky;top:36px}
+.pasos-izq .sub{margin-bottom:26px}
+.linea{list-style:none;margin:0;padding:0;display:grid;gap:22px;position:relative}
+.linea::before{content:"";position:absolute;left:25px;top:30px;bottom:30px;width:4px;background:var(--tinta);border-radius:4px}
+.linea li{display:grid;grid-template-columns:54px 1fr;gap:20px;align-items:start;position:relative}
+.nodo{width:54px;height:54px;border-radius:50%;background:var(--tinta);color:var(--lima);display:grid;place-items:center;font:800 24px 'MuseoModerno',sans-serif;z-index:1;border:4px solid var(--crema)}
+.paso{border:3px solid var(--tinta);border-radius:24px;padding:22px 24px;box-shadow:5px 6px 0 var(--tinta)}
+.paso h3{font-size:24px;margin-bottom:6px}.paso p{margin:0;font-weight:500}
+.c1{background:var(--lima)}.c2{background:var(--rosa)}.c3{background:var(--peri)}
+
+/* bento asimétrico */
+.cinco{grid-template-columns:repeat(6,1fr);align-items:stretch}
+.vive,.vive:nth-child(n+4){grid-column:span 2}
+.v-app{grid-row:span 2}
+.v-app .vfoto{aspect-ratio:auto;flex:1;min-height:300px}
+.v-ase{grid-column:3/5}.v-com{grid-column:5/7}
+.v-cur{grid-column:3/7!important}
+.v-pod{grid-column:1/7!important;flex-direction:row;align-items:stretch}
+.v-pod .vfoto{width:46%;aspect-ratio:auto;border-bottom:0;border-right:3px solid var(--tinta);min-height:260px}
+.v-pod .vtxt{display:flex;flex-direction:column;justify-content:center;padding:28px}
+.v-pod h3{font-size:34px}
+.spo{display:inline-block;align-self:flex-start;margin-top:16px;background:var(--lima);border:2.5px solid var(--tinta);border-radius:999px;font-weight:800;font-size:14px;padding:9px 16px}
+.vfoto-cursos img{object-fit:contain;background:var(--lima)}
+.v-cur .vfoto{aspect-ratio:1500/574}
+
+/* preguntas frecuentes */
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:start}
+.faq-izq{position:sticky;top:36px}
+.faq-cta{margin-top:26px;background:var(--lila);border:3px solid var(--tinta);border-radius:24px;padding:22px;box-shadow:5px 6px 0 var(--tinta);display:grid;gap:10px;justify-items:start}
+.faq-cta b{font:800 26px 'MuseoModerno',sans-serif}.faq-cta span{font-weight:500}
+.faq-lista{display:grid;gap:12px}
+details{background:#fff;border:3px solid var(--tinta);border-radius:20px;overflow:hidden;transition:background .2s}
+details[open]{background:var(--lima)}
+summary{cursor:pointer;list-style:none;padding:18px 22px;font-weight:800;font-size:17px;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:800 26px/1 'MuseoModerno',sans-serif;flex:none;transition:transform .25s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:0;padding:0 22px 20px;font-weight:500}
+
+/* botón flotante */
+.flota{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:max(18px,env(safe-area-inset-bottom,0px));z-index:20;background:var(--tinta);color:var(--lima);border:3px solid var(--tinta);border-radius:999px;padding:15px 22px;font:800 15px 'Montserrat',sans-serif;text-decoration:none;box-shadow:4px 5px 0 var(--lima);transform:translateY(0);transition:transform .25s,opacity .25s}
+.flota[hidden]{display:none}
+.flota.oculto{transform:translateY(90px);opacity:0;pointer-events:none}
 .agenda-sec{padding-block:0 76px}
 .agenda-tit{font:800 clamp(20px,3vw,28px) 'MuseoModerno',sans-serif;text-align:center;margin:0 0 22px}
 .agenda-tit span{display:inline-block;animation:salta 1.4s ease-in-out infinite}
@@ -189,13 +210,16 @@ footer img{height:30px;margin:0 auto 12px;filter:brightness(0) invert(1)}
   .hero{grid-template-columns:1fr;padding-bottom:40px}
   .collage{min-height:420px;order:-1;margin-bottom:10px}
   .quienes{grid-template-columns:1fr}
-  .tres{grid-template-columns:1fr}
+  .pasos-grid,.faq-grid{grid-template-columns:1fr;gap:30px}
+  .pasos-izq,.faq-izq{position:static}
+  .linea::before{left:21px}.linea li{grid-template-columns:46px 1fr;gap:14px}.nodo{width:46px;height:46px;font-size:20px}
   .mosaico{grid-auto-rows:46px;gap:10px}
   .mosaico .m1{grid-column:1/13;grid-row:1/6}.mosaico .m2{grid-column:1/7;grid-row:6/10}.mosaico .m3{grid-column:7/13;grid-row:6/10}
   .cinco{grid-template-columns:1fr 1fr;gap:14px}
+  .v-app{grid-row:auto}.v-app .vfoto{aspect-ratio:4/3;flex:none;min-height:0}
+  .vive,.v-ase{grid-column:span 1!important}.v-com,.v-cur,.v-pod{grid-column:1/3!important}
+  .v-pod{flex-direction:column}.v-pod .vfoto{width:auto;border-right:0;border-bottom:3px solid var(--tinta);min-height:0;aspect-ratio:16/10}.v-pod h3{font-size:24px}.v-pod .vtxt{padding:16px}
   .vive,.vive:nth-child(n+4){grid-column:span 1}
-  .v-cur,.v-pod{grid-column:1/3!important}
-  .cv b{font-size:3.3cqw}
   .vtxt{padding:14px 14px 18px}.vtxt h3{font-size:21px}.vtxt p{font-size:14px}
   section{padding-block:52px}
   .sello{width:84px;height:84px;font-size:11px}
@@ -203,8 +227,6 @@ footer img{height:30px;margin:0 auto 12px;filter:brightness(0) invert(1)}
 </style>
 </head>
 <body>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="estr" viewBox="0 0 100 100"><polygon points="50.0,4.1 55.0,29.6 70.1,11.7 63.9,34.3 91.8,21.2 69.6,42.6 91.8,44.9 70.8,52.5 95.9,67.4 67.3,61.9 80.8,84.8 59.8,68.6 60.0,90.7 50.0,71.0 38.4,97.2 40.2,68.6 22.4,81.1 32.7,61.9 5.6,66.8 29.2,52.5 8.3,44.9 30.4,42.6 15.1,25.9 36.1,34.3 28.0,8.1 45.0,29.6" fill="currentColor"/></symbol></svg>
 
 <header class="wrap top">
   <img src="assets/logo-feminario.png" alt="Feminario">
@@ -220,7 +242,7 @@ footer img{height:30px;margin:0 auto 12px;filter:brightness(0) invert(1)}
     </div>
     <div class="collage" aria-hidden="true">
       <figure class="foto f1"><img src="assets/fotos/cafe.jpg" alt="" loading="eager"></figure>
-      <figure class="foto f2"><img src="assets/fotos/ventana-pose.jpg" alt=""></figure>
+      <figure class="foto f2"><img src="assets/fotos/ventana-baile.jpg" alt="" style="object-position:45% 40%"></figure>
       <figure class="foto f3"><img src="assets/fotos/abrazo.jpg" alt=""></figure>
       <div class="sello">El dinero es poder decidir</div>
       <img class="estrella" style="top:-14px;right:36%" src="assets/forma-sol.png" alt="">
@@ -243,15 +265,18 @@ footer img{height:30px;margin:0 auto 12px;filter:brightness(0) invert(1)}
     <span>El dinero es poder decidir <i>✦</i> Finanzas en comunidad <i>✦</i> Sin términos raros <i>✦</i> Entre mujeres <i>✦</i> Tu plata, tus reglas <i>✦</i></span>
   </div></div>
 
-  <section class="s-crema">
-    <div class="wrap">
-      <h2 class="t-sec" data-rev>Qué pasa en esos 15 minutos</h2>
-      <p class="sub" data-rev>Una charla corta, tranquila y a tu ritmo.</p>
-      <div class="tres">
-        <div class="caja" data-rev><div class="min">1</div><h3>Te escuchamos</h3><p>Cómo está tu plata hoy, qué sueñas lograr y qué te frena.</p></div>
-        <div class="caja" data-rev><div class="min">2</div><h3>Te orientamos</h3><p>Te decimos por dónde empezar, en palabras simples y sin presión.</p></div>
-        <div class="caja" data-rev><div class="min">3</div><h3>Decides tú</h3><p>Te contamos cómo acompañamos y tú ves si te sirve ahora. Sin afán.</p></div>
+  <section class="s-crema pasos">
+    <div class="wrap pasos-grid">
+      <div class="pasos-izq" data-rev>
+        <h2 class="t-sec">Qué pasa en esos 15 minutos</h2>
+        <p class="sub">Una charla corta, tranquila y a tu ritmo.</p>
+        <a class="btn" href="#agenda">Agendar mi cita ↑</a>
       </div>
+      <ol class="linea">
+        <li data-rev><span class="nodo">1</span><div class="paso c1"><h3>Te escuchamos</h3><p>Cómo está tu plata hoy, qué sueñas lograr y qué te frena.</p></div></li>
+        <li data-rev><span class="nodo">2</span><div class="paso c2"><h3>Te orientamos</h3><p>Te decimos por dónde empezar, en palabras simples y sin presión.</p></div></li>
+        <li data-rev><span class="nodo">3</span><div class="paso c3"><h3>Decides tú</h3><p>Te contamos cómo acompañamos y tú ves si te sirve ahora. Sin afán.</p></div></li>
+      </ol>
     </div>
   </section>
 
@@ -278,7 +303,7 @@ footer img{height:30px;margin:0 auto 12px;filter:brightness(0) invert(1)}
           <div class="vtxt"><h3>La app</h3><p>Femi, tu asistente financiera personalizada.</p></div>
         </article>
         <article class="vive v-ase" data-rev>
-          <div class="vfoto"><img src="assets/fotos/ventana-baile.jpg" alt="Andrea y Valentina celebrando" loading="lazy" style="object-position:45% 40%"></div>
+          <div class="vfoto"><img src="assets/fotos/ventana-pose.jpg" alt="Andrea y Valentina, fundadoras de Feminario" loading="lazy"></div>
           <div class="vtxt"><h3>Asesoría</h3><p>Dentro del club, asesoría directa con Andrea y Valentina.</p></div>
         </article>
         <article class="vive v-com" data-rev>
@@ -286,24 +311,37 @@ footer img{height:30px;margin:0 auto 12px;filter:brightness(0) invert(1)}
           <div class="vtxt"><h3>Comunidad</h3><p>Aprende y avanza acompañada de otras mujeres.</p></div>
         </article>
         <article class="vive v-cur" data-rev>
-          <div class="vfoto vfoto-cursos" role="img" aria-label="Portadas de los cursos: Creciendo juntas, Inversiones sostenibles, Comprar dólares, SheInvest y Criptomonedas">
-            <div class="cv cv1"><img class="mk" src="assets/logo-feminario.png" alt=""><b>Creciendo juntas: finanzas para la autonomía</b><svg class="e e-o"><use href="#estr"/></svg></div>
-            <div class="cv cv2"><img class="mk" src="assets/logo-feminario.png" alt=""><svg class="e e-c"><use href="#estr"/></svg><b>Inversiones sostenibles</b></div>
-            <div class="cv cv3"><img class="mk" src="assets/logo-feminario.png" alt=""><i class="aro a1"></i><i class="aro a2"></i><b>Comprar dólares</b></div>
-            <div class="cv cv4"><img class="mk" src="assets/logo-feminario.png" alt=""><b>SheInvest<small>De ahorradoras a inversionistas</small></b></div>
-            <div class="cv cv5"><img class="mk" src="assets/logo-feminario.png" alt=""><svg class="e e-l1"><use href="#estr"/></svg><svg class="e e-l2"><use href="#estr"/></svg><b>Criptomonedas</b></div>
-          </div>
+          <div class="vfoto vfoto-cursos"><img src="assets/fotos/cursos.jpg" alt="Portadas de los cursos: Creciendo juntas, Inversiones sostenibles, Comprar dólares, SheInvest y Criptomonedas" loading="lazy"></div>
           <div class="vtxt"><h3>Cursos</h3><p>Aprende de inversión paso a paso, a tu ritmo.</p></div>
         </article>
         <a class="vive v-pod" data-rev href="https://open.spotify.com/show/48yZaG2OUpzGPu8Rj6dbs9" target="_blank" rel="noopener" aria-label="Escuchar el podcast de Feminario en Spotify">
           <div class="vfoto"><img src="assets/fotos/podcast.jpg" alt="Grabación del podcast de Feminario" loading="lazy"></div>
-          <div class="vtxt"><h3>Podcast</h3><p>Escúchalo en Spotify ↗</p></div>
+          <div class="vtxt"><h3>Podcast</h3><p>Conversaciones sobre plata, sin tecnicismos.</p><span class="spo">Escúchalo en Spotify ↗</span></div>
         </a>
       </div>
       <div class="cierre" data-rev><a class="btn lima" href="#agenda">Quiero mi cita ↑</a></div>
     </div>
   </section>
+
+  <section class="s-crema faq">
+    <div class="wrap faq-grid">
+      <aside class="faq-izq" data-rev>
+        <h2 class="t-sec">Preguntas frecuentes</h2>
+        <p class="sub">Lo que casi todas preguntan antes de agendar.</p>
+        <div class="faq-cta"><b>¿Lista?</b><span>Son 15 minutos y empiezas por ti.</span><a class="btn lima" href="#agenda">Agendar mi cita ↑</a></div>
+      </aside>
+      <div class="faq-lista" data-rev>
+        <details><summary>¿Cuánto dura la cita?</summary><p>15 minutos, por videollamada de Google Meet. La hora es de Colombia.</p></details>
+        <details><summary>¿De qué hablamos?</summary><p>De cómo está tu plata hoy, qué quieres lograr y cómo funciona Feminario, para ver si te sirve ahora.</p></details>
+        <details><summary>¿Qué necesito para conectarme?</summary><p>Un celular o computador con internet y el correo de tu calendario de Google, para que te llegue la invitación.</p></details>
+        <details><summary>¿Por qué me escriben por WhatsApp?</summary><p>Para confirmar tu cita. Si no respondes, damos el cupo a otra mujer.</p></details>
+        <details><summary>¿Puedo invitar a mi pareja o socia?</summary><p>Sí. En el formulario puedes poner su correo y le llega la misma invitación.</p></details>
+        <details><summary>¿Qué pasa con mis datos?</summary><p>Los usamos solo para organizar tu cita y escribirte sobre ella.</p></details>
+      </div>
+    </div>
+  </section>
 </main>
+<a class="flota" id="flota" href="#agenda" hidden>Agendar mi cita ↑</a>
 
 <footer>
   <div class="wrap">
@@ -574,6 +612,13 @@ function animarPagina(){
 
 mostrar(1);
 animarPagina();
+(function(){
+  const f=document.getElementById("flota"), z=document.getElementById("agenda");
+  if(!f||!z||!("IntersectionObserver" in window)) return;
+  f.hidden=false; f.classList.add("oculto");
+  new IntersectionObserver(es=>{ const visible=es[0].isIntersecting; f.classList.toggle("oculto",visible || window.scrollY<400); },{threshold:.15}).observe(z);
+  addEventListener("scroll",()=>{ if(window.scrollY<400) f.classList.add("oculto"); },{passive:true});
+})();
 </script>
 </body>
 </html>
