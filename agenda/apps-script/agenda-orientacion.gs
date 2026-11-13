@@ -20,7 +20,7 @@ const CFG = {
   CALENDARIO_ID: "PEGA_AQUI_EL_ID_DEL_CALENDARIO_DE_ORIENTACION",   // calendario propio, no el de ventas
   BLOQUEAR_CON: [],             // ej: ["ventas@feminario.co"] — solo se lee si está ocupado, no se escribe
   ZONA: "America/Bogota",
-  DURACION_MIN: 30,
+  DURACION_MIN: 15,
   DESCANSO_MIN: 0,              // minutos libres entre citas
   DIAS_ADELANTE: 21,
   AVISO_MIN_HORAS: 12,          // no se agenda con menos de 12 horas de aviso
